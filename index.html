@@ -1,379 +1,368 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.5">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Goal-Setting Navigator for Health and Well-being</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .step-card {
+            transition: all 0.5s ease-in-out;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .step-card.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+            max-height: 2000px; /* Large enough for content */
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .checkbox-label:has(input:checked) {
+            background-color: #e0f2fe; /* light blue */
+            border-color: #0284c7; /* sky-600 */
+        }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;The Goal-Setting Navigator for Health and Well-being&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.step-card {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.5s ease-in-out;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(20px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>visibility: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-height: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.step-card.active {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>visibility: visible;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-height: 2000px; /* Large enough for content */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.fade-in {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeIn 0.8s ease-in-out forwards;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeIn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>from { opacity: 0; transform: translateY(10px); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>to { opacity: 1; transform: translateY(0); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.checkbox-label:has(input:checked) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e0f2fe; /* light blue */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-color: #0284c7; /* sky-600 */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-slate-50 text-slate-800"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container mx-auto max-w-4xl p-4 sm:p-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Header --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;header class="text-center mb-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-3xl sm:text-4xl font-bold text-sky-700"&gt;The Goal-Setting Navigator&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="mt-2 text-lg text-slate-600"&gt;Your journey to better health starts with a single step.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;main class="space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Step 1: Initial Assessment --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="step1" class="bg-white p-6 rounded-xl shadow-lg step-card active"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-4 text-sky-800"&gt;Step 1: Tell Us a Little About Yourself&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 mb-6"&gt;This information helps us personalize your goals. It remains private and is not stored.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;form id="assessmentForm" class="grid grid-cols-1 md:grid-cols-2 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="age" class="block text-sm font-medium text-slate-700"&gt;Age&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="number" id="age" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="gender" class="block text-sm font-medium text-slate-700"&gt;Gender&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="gender" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Female&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Male&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Prefer not to say&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="weight" class="block text-sm font-medium text-slate-700"&gt;Current Weight (lbs)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="number" id="weight" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-2 gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                           </span>&lt;label for="heightFt" class="block text-sm font-medium text-slate-700"&gt;Height (ft)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                           </span>&lt;input type="number" id="heightFt" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                           </span>&lt;label for="heightIn" class="block text-sm font-medium text-slate-700"&gt;Height (in)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                           </span>&lt;input type="number" id="heightIn" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" value="0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="md:col-span-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="activityLevel" class="block text-sm font-medium text-slate-700"&gt;Self-identified Activity Level&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="activityLevel" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="sedentary"&gt;Sedentary (little or no exercise)&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="lightly_active"&gt;Lightly Active (light exercise/sports 1-3 days/week)&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="moderately_active"&gt;Moderately Active (moderate exercise/sports 3-5 days/week)&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="very_active"&gt;Very Active (hard exercise/sports 6-7 days a week)&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="md:col-span-2 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button type="submit" class="w-full md:w-auto bg-sky-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-700 transition-colors shadow-md"&gt;Next: Define Your 'Why' &amp;rarr;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Step 2: Motivators --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="step2" class="bg-white p-6 rounded-xl shadow-lg step-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-4 text-sky-800"&gt;Step 2: What's Your Motivation?&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 mb-6"&gt;Understanding your "why" is key to success. Select all that apply.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="motivators" class="grid grid-cols-1 sm:grid-cols-2 gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="checkbox-label border-2 border-slate-200 p-4 rounded-lg cursor-pointer transition-colors flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" name="motivator" value="health" class="h-5 w-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="font-semibold text-slate-800"&gt;Health&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-sm text-slate-500"&gt;Reduce risk of future health problems.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="checkbox-label border-2 border-slate-200 p-4 rounded-lg cursor-pointer transition-colors flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" name="motivator" value="comorbidities" class="h-5 w-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="font-semibold text-slate-800"&gt;Co-morbidities&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                             </span>&lt;p class="text-sm text-slate-500"&gt;Better manage existing conditions.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="checkbox-label border-2 border-slate-200 p-4 rounded-lg cursor-pointer transition-colors flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" name="motivator" value="functional" class="h-5 w-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="font-semibold text-slate-800"&gt;Functional Goals&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                             </span>&lt;p class="text-sm text-slate-500"&gt;Improve day-to-day physical abilities.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="checkbox-label border-2 border-slate-200 p-4 rounded-lg cursor-pointer transition-colors flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" name="motivator" value="appearance" class="h-5 w-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="font-semibold text-slate-800"&gt;Appearance&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                             </span>&lt;p class="text-sm text-slate-500"&gt;Feel more confident in your skin.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mt-8 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="calculateBtn" class="w-full md:w-auto bg-sky-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-700 transition-colors shadow-md"&gt;See Your Potential &amp;rarr;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Results &amp; "What If" Scenarios --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="results" class="step-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="bg-white p-6 rounded-xl shadow-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-2xl font-semibold mb-4 text-sky-800"&gt;Your Starting Point&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="bmiResult" class="text-center bg-sky-50 p-4 rounded-lg"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-6 rounded-xl shadow-lg mt-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-2xl font-semibold mb-4 text-sky-800"&gt;The "What If" Scenario Projector&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-slate-600 mb-6"&gt;Even small changes can have a big impact. Here's what's possible at different milestones.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="scenarios" class="space-y-6"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Step 3: SMART Goals --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="step3" class="bg-white p-6 rounded-xl shadow-lg step-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-4 text-sky-800"&gt;Step 3: Create Your SMART Goal&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;p class="text-slate-600 mb-6"&gt;Let's make your goal Specific, Measurable, Achievable, Relevant, and Time-bound. A safe and sustainable rate of weight loss is 1-2 pounds per week.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex flex-col md:flex-row items-center gap-4 bg-slate-50 p-4 rounded-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="flex-grow"&gt;I will aim to lose &lt;input type="number" id="weeklyLoss" value="1.5" step="0.5" min="0.5" max="2" class="w-20 text-center rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500"&gt; pounds per week.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="setGoalBtn" class="bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-emerald-700 transition-colors shadow-md"&gt;Set My Goal&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="goalTimeline" class="mt-6 text-slate-700 space-y-2"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">             </span>&lt;!-- Step 4: Education &amp; Next Steps --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="step4" class="bg-white p-6 rounded-xl shadow-lg step-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-4 text-sky-800"&gt;Keep the Momentum Going&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 mb-6"&gt;Knowledge is power. Here are some simple tips to support your journey.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-slate-50 p-4 rounded-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-semibold text-slate-800 mb-2"&gt;Benefits of Gradual Loss&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600"&gt;Losing weight slowly (1-2 lbs/week) helps ensure you're losing fat instead of muscle and makes it easier to keep the weight off long-term.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-slate-50 p-4 rounded-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-semibold text-slate-800 mb-2"&gt;Read Food Labels&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600"&gt;Pay attention to serving sizes, calories, and sugar content. Small adjustments can make a big difference.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="bg-slate-50 p-4 rounded-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-semibold text-slate-800 mb-2"&gt;Increase Daily Activity&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600"&gt;Take the stairs, park further away, or go for a short walk during your lunch break. Every little bit helps!&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="bg-slate-50 p-4 rounded-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-semibold text-slate-800 mb-2"&gt;Prioritize Sleep&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600"&gt;Lack of sleep can affect hormones that regulate hunger. Aim for 7-9 hours of quality sleep per night.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mt-6 bg-sky-100 border-l-4 border-sky-500 text-sky-800 p-4 rounded-r-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;strong&gt;Remember:&lt;/strong&gt; This tool is for educational purposes. Always consult with a healthcare professional before starting any new diet or exercise program.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- DOM Elements ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const assessmentForm = document.getElementById('assessmentForm');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const calculateBtn = document.getElementById('calculateBtn');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const setGoalBtn = document.getElementById('setGoalBtn');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const bmiResultEl = document.getElementById('bmiResult');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const scenariosEl = document.getElementById('scenarios');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const goalTimelineEl = document.getElementById('goalTimeline');</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>let userData = {};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- Data for Scenarios ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const scenarioData = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>health: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'5': "You could significantly lower your risk of developing type 2 diabetes.",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'10': "Can lead to significant improvements in cholesterol levels and further reduce your risk of heart disease.",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'15': "Further reduces risks for several types of cancer and dramatically improves heart health."</p>
-<p class="p1"><span class="Apple-converted-space">            </span>},</p>
-<p class="p1"><span class="Apple-converted-space">            </span>comorbidities: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'5': "If you have high blood pressure, you might see a noticeable reduction in your readings. For those with pre-diabetes, this is a major step towards reversing it.",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'10': "Many people with sleep apnea experience a reduction in symptoms. The strain on your joints, like knees and hips, could be substantially lessened.",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'15': "Can lead to remission of type 2 diabetes in some individuals and significantly improve conditions like fatty liver disease."</p>
-<p class="p1"><span class="Apple-converted-space">            </span>},</p>
-<p class="p1"><span class="Apple-converted-space">            </span>functional: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'5': "You might find it easier to climb a flight of stairs or play with your children with less shortness of breath.",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'10': "Activities like tying your shoes or getting in and out of a car may become noticeably easier. You might have more energy throughout the day.",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'15': "You may feel a significant increase in your overall energy, stamina, and mobility, making daily activities much easier."</p>
-<p class="p1"><span class="Apple-converted-space">            </span>},</p>
-<p class="p1"><span class="Apple-converted-space">            </span>appearance: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'5': "Your clothes may start to fit more comfortably, and you might notice a change in your face.",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'10': "You may notice more definition in your face and a more significant change in how your clothes fit and how you look in photos.",</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'15': "Friends and family may notice significant changes. You might need a new wardrobe!"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- Event Listeners ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>assessmentForm.addEventListener('submit', function(e) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Store user data</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const weightLbs = parseFloat(document.getElementById('weight').value);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const heightFt = parseFloat(document.getElementById('heightFt').value);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const heightIn = parseFloat(document.getElementById('heightIn').value);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (isNaN(weightLbs) || isNaN(heightFt) || isNaN(heightIn) || weightLbs &lt;= 0 || heightFt &lt;= 0) {</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>alert("Please enter valid weight and height.");</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>userData = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>age: document.getElementById('age').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>gender: document.getElementById('gender').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>weightLbs: weightLbs,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>heightFt: heightFt,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>heightIn: heightIn,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>activityLevel: document.getElementById('activityLevel').value</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Show next step</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('step1').classList.remove('active');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('step2').classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('step2').scrollIntoView({ behavior: 'smooth' });</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>calculateBtn.addEventListener('click', function() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const selectedMotivators = Array.from(document.querySelectorAll('input[name="motivator"]:checked')).map(cb =&gt; cb.value);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (selectedMotivators.length === 0) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>alert("Please select at least one motivator.");</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>userData.motivators = selectedMotivators;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>displayBmiAndScenarios();</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('step2').classList.remove('active');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('results').classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('step3').classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('step4').classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('results').scrollIntoView({ behavior: 'smooth' });</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>setGoalBtn.addEventListener('click', function() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>displayTimeline();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- Functions ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function calculateBMI(weightLbs, heightFt, heightIn) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const heightTotalInches = (heightFt * 12) + heightIn;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const bmi = (weightLbs / (heightTotalInches * heightTotalInches)) * 703;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return parseFloat(bmi.toFixed(1));</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function getBmiCategory(bmi) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (bmi &lt; 18.5) return { category: "Underweight", color: "text-blue-600" };</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (bmi &lt; 25) return { category: "Normal weight", color: "text-green-600" };</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (bmi &lt; 30) return { category: "Overweight", color: "text-yellow-600" };</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (bmi &lt; 35) return { category: "Obesity Class I", color: "text-orange-600" };</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (bmi &lt; 40) return { category: "Obesity Class II", color: "text-red-600" };</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return { category: "Obesity Class III", color: "text-red-800" };</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function displayBmiAndScenarios() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const { weightLbs, heightFt, heightIn, motivators } = userData;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Display BMI</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const bmi = calculateBMI(weightLbs, heightFt, heightIn);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const bmiInfo = getBmiCategory(bmi);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bmiResultEl.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg"&gt;Your estimated BMI is &lt;strong class="text-2xl ${bmiInfo.color}"&gt;${bmi}&lt;/strong&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-md ${bmiInfo.color}"&gt;(${bmiInfo.category})&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Display Scenarios</p>
-<p class="p1"><span class="Apple-converted-space">            </span>scenariosEl.innerHTML = ''; // Clear previous</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const percentages = [5, 10, 15];</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>percentages.forEach((p, index) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const lossLbs = (weightLbs * (p / 100)).toFixed(1);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const targetWeight = (weightLbs - lossLbs).toFixed(1);</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>let benefitsHtml = '&lt;ul class="list-disc list-inside space-y-2 text-slate-600"&gt;';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>motivators.forEach(m =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>if(scenarioData[m] &amp;&amp; scenarioData[m][p]) {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>benefitsHtml += `&lt;li&gt;${scenarioData[m][p]}&lt;/li&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>});</p>
-<p class="p1"><span class="Apple-converted-space">                </span>benefitsHtml += '&lt;/ul&gt;';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>const scenarioCard = `</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="p-5 rounded-lg border border-slate-200 bg-white fade-in" style="animation-delay: ${index * 200}ms;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-semibold text-sky-700 mb-2"&gt;If you lose ${p}% (${lossLbs} lbs)...&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="mb-3 text-slate-500"&gt;Your new weight would be approximately &lt;strong class="text-slate-700"&gt;${targetWeight} lbs&lt;/strong&gt;. Potential benefits include:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>${benefitsHtml}</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>scenariosEl.innerHTML += scenarioCard;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function displayTimeline() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const weeklyLoss = parseFloat(document.getElementById('weeklyLoss').value);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (isNaN(weeklyLoss) || weeklyLoss &lt;= 0) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>alert("Please enter a valid weekly loss goal.");</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const loss5percent = userData.weightLbs * 0.05;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const loss10percent = userData.weightLbs * 0.10;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const weeksFor5 = Math.round(loss5percent / weeklyLoss);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const weeksFor10 = Math.round(loss10percent / weeklyLoss);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>goalTimelineEl.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-emerald-50 border-l-4 border-emerald-500 text-emerald-800 p-4 rounded-r-lg fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-lg mb-2"&gt;Your Projected Timeline:&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;To reach your &lt;strong&gt;5%&lt;/strong&gt; weight loss goal (${loss5percent.toFixed(1)} lbs), it would take approximately &lt;strong&gt;${weeksFor5} weeks&lt;/strong&gt;.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;To reach your &lt;strong&gt;10%&lt;/strong&gt; weight loss goal (${loss10percent.toFixed(1)} lbs), it would take approximately &lt;strong&gt;${weeksFor10} weeks&lt;/strong&gt;.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-2 text-sm"&gt;Keep going! Consistency is the key to success.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>goalTimelineEl.scrollIntoView({ behavior: 'smooth' });</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Initial setup</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.onload = () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">             </span>// Animate the first step in</p>
-<p class="p1"><span class="Apple-converted-space">             </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('step1').classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">             </span>}, 100);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-4xl p-4 sm:p-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-sky-700">The Goal-Setting Navigator</h1>
+            <p class="mt-2 text-lg text-slate-600">Your journey to better health starts with a single step.</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- Step 1: Initial Assessment -->
+            <div id="step1" class="bg-white p-6 rounded-xl shadow-lg step-card active">
+                <h2 class="text-2xl font-semibold mb-4 text-sky-800">Step 1: Tell Us a Little About Yourself</h2>
+                <p class="text-slate-600 mb-6">This information helps us personalize your goals. It remains private and is not stored.</p>
+                <form id="assessmentForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="age" class="block text-sm font-medium text-slate-700">Age</label>
+                        <input type="number" id="age" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" required>
+                    </div>
+                    <div>
+                        <label for="gender" class="block text-sm font-medium text-slate-700">Gender</label>
+                        <select id="gender" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500">
+                            <option>Female</option>
+                            <option>Male</option>
+                            <option>Prefer not to say</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="weight" class="block text-sm font-medium text-slate-700">Current Weight (lbs)</label>
+                        <input type="number" id="weight" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" required>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                           <label for="heightFt" class="block text-sm font-medium text-slate-700">Height (ft)</label>
+                           <input type="number" id="heightFt" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" required>
+                        </div>
+                        <div>
+                           <label for="heightIn" class="block text-sm font-medium text-slate-700">Height (in)</label>
+                           <input type="number" id="heightIn" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" value="0">
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="activityLevel" class="block text-sm font-medium text-slate-700">Self-identified Activity Level</label>
+                        <select id="activityLevel" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500">
+                            <option value="sedentary">Sedentary (little or no exercise)</option>
+                            <option value="lightly_active">Lightly Active (light exercise/sports 1-3 days/week)</option>
+                            <option value="moderately_active">Moderately Active (moderate exercise/sports 3-5 days/week)</option>
+                            <option value="very_active">Very Active (hard exercise/sports 6-7 days a week)</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit" class="w-full md:w-auto bg-sky-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-700 transition-colors shadow-md">Next: Define Your 'Why' &rarr;</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 2: Motivators -->
+            <div id="step2" class="bg-white p-6 rounded-xl shadow-lg step-card">
+                <h2 class="text-2xl font-semibold mb-4 text-sky-800">Step 2: What's Your Motivation?</h2>
+                <p class="text-slate-600 mb-6">Understanding your "why" is key to success. Select all that apply.</p>
+                <div id="motivators" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <label class="checkbox-label border-2 border-slate-200 p-4 rounded-lg cursor-pointer transition-colors flex items-center space-x-3">
+                        <input type="checkbox" name="motivator" value="health" class="h-5 w-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
+                        <div>
+                            <span class="font-semibold text-slate-800">Health</span>
+                            <p class="text-sm text-slate-500">Reduce risk of future health problems.</p>
+                        </div>
+                    </label>
+                    <label class="checkbox-label border-2 border-slate-200 p-4 rounded-lg cursor-pointer transition-colors flex items-center space-x-3">
+                        <input type="checkbox" name="motivator" value="comorbidities" class="h-5 w-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
+                        <div>
+                            <span class="font-semibold text-slate-800">Co-morbidities</span>
+                             <p class="text-sm text-slate-500">Better manage existing conditions.</p>
+                        </div>
+                    </label>
+                    <label class="checkbox-label border-2 border-slate-200 p-4 rounded-lg cursor-pointer transition-colors flex items-center space-x-3">
+                        <input type="checkbox" name="motivator" value="functional" class="h-5 w-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
+                        <div>
+                            <span class="font-semibold text-slate-800">Functional Goals</span>
+                             <p class="text-sm text-slate-500">Improve day-to-day physical abilities.</p>
+                        </div>
+                    </label>
+                    <label class="checkbox-label border-2 border-slate-200 p-4 rounded-lg cursor-pointer transition-colors flex items-center space-x-3">
+                        <input type="checkbox" name="motivator" value="appearance" class="h-5 w-5 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
+                        <div>
+                            <span class="font-semibold text-slate-800">Appearance</span>
+                             <p class="text-sm text-slate-500">Feel more confident in your skin.</p>
+                        </div>
+                    </label>
+                </div>
+                <div class="mt-8 text-center">
+                    <button id="calculateBtn" class="w-full md:w-auto bg-sky-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-700 transition-colors shadow-md">See Your Potential &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Results & "What If" Scenarios -->
+            <div id="results" class="step-card">
+                 <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4 text-sky-800">Your Starting Point</h2>
+                    <div id="bmiResult" class="text-center bg-sky-50 p-4 rounded-lg"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg mt-6">
+                    <h2 class="text-2xl font-semibold mb-4 text-sky-800">The "What If" Scenario Projector</h2>
+                    <p class="text-slate-600 mb-6">Even small changes can have a big impact. Here's what's possible at different milestones.</p>
+                    <div id="scenarios" class="space-y-6"></div>
+                </div>
+            </div>
+            
+            <!-- Step 3: SMART Goals -->
+            <div id="step3" class="bg-white p-6 rounded-xl shadow-lg step-card">
+                <h2 class="text-2xl font-semibold mb-4 text-sky-800">Step 3: Create Your SMART Goal</h2>
+                 <p class="text-slate-600 mb-6">Let's make your goal Specific, Measurable, Achievable, Relevant, and Time-bound. A safe and sustainable rate of weight loss is 1-2 pounds per week.</p>
+                <div class="flex flex-col md:flex-row items-center gap-4 bg-slate-50 p-4 rounded-lg">
+                    <p class="flex-grow">I will aim to lose <input type="number" id="weeklyLoss" value="1.5" step="0.5" min="0.5" max="2" class="w-20 text-center rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500"> pounds per week.</p>
+                    <button id="setGoalBtn" class="bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-emerald-700 transition-colors shadow-md">Set My Goal</button>
+                </div>
+                <div id="goalTimeline" class="mt-6 text-slate-700 space-y-2"></div>
+            </div>
+
+             <!-- Step 4: Education & Next Steps -->
+            <div id="step4" class="bg-white p-6 rounded-xl shadow-lg step-card">
+                <h2 class="text-2xl font-semibold mb-4 text-sky-800">Keep the Momentum Going</h2>
+                <p class="text-slate-600 mb-6">Knowledge is power. Here are some simple tips to support your journey.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-slate-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-slate-800 mb-2">Benefits of Gradual Loss</h3>
+                        <p class="text-slate-600">Losing weight slowly (1-2 lbs/week) helps ensure you're losing fat instead of muscle and makes it easier to keep the weight off long-term.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-slate-800 mb-2">Read Food Labels</h3>
+                        <p class="text-slate-600">Pay attention to serving sizes, calories, and sugar content. Small adjustments can make a big difference.</p>
+                    </div>
+                     <div class="bg-slate-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-slate-800 mb-2">Increase Daily Activity</h3>
+                        <p class="text-slate-600">Take the stairs, park further away, or go for a short walk during your lunch break. Every little bit helps!</p>
+                    </div>
+                     <div class="bg-slate-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-slate-800 mb-2">Prioritize Sleep</h3>
+                        <p class="text-slate-600">Lack of sleep can affect hormones that regulate hunger. Aim for 7-9 hours of quality sleep per night.</p>
+                    </div>
+                </div>
+                <div class="mt-6 bg-sky-100 border-l-4 border-sky-500 text-sky-800 p-4 rounded-r-lg">
+                    <p><strong>Remember:</strong> This tool is for educational purposes. Always consult with a healthcare professional before starting any new diet or exercise program.</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- DOM Elements ---
+        const assessmentForm = document.getElementById('assessmentForm');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const setGoalBtn = document.getElementById('setGoalBtn');
+        const bmiResultEl = document.getElementById('bmiResult');
+        const scenariosEl = document.getElementById('scenarios');
+        const goalTimelineEl = document.getElementById('goalTimeline');
+        
+        let userData = {};
+
+        // --- Data for Scenarios ---
+        const scenarioData = {
+            health: {
+                '5': "You could significantly lower your risk of developing type 2 diabetes.",
+                '10': "Can lead to significant improvements in cholesterol levels and further reduce your risk of heart disease.",
+                '15': "Further reduces risks for several types of cancer and dramatically improves heart health."
+            },
+            comorbidities: {
+                '5': "If you have high blood pressure, you might see a noticeable reduction in your readings. For those with pre-diabetes, this is a major step towards reversing it.",
+                '10': "Many people with sleep apnea experience a reduction in symptoms. The strain on your joints, like knees and hips, could be substantially lessened.",
+                '15': "Can lead to remission of type 2 diabetes in some individuals and significantly improve conditions like fatty liver disease."
+            },
+            functional: {
+                '5': "You might find it easier to climb a flight of stairs or play with your children with less shortness of breath.",
+                '10': "Activities like tying your shoes or getting in and out of a car may become noticeably easier. You might have more energy throughout the day.",
+                '15': "You may feel a significant increase in your overall energy, stamina, and mobility, making daily activities much easier."
+            },
+            appearance: {
+                '5': "Your clothes may start to fit more comfortably, and you might notice a change in your face.",
+                '10': "You may notice more definition in your face and a more significant change in how your clothes fit and how you look in photos.",
+                '15': "Friends and family may notice significant changes. You might need a new wardrobe!"
+            }
+        };
+
+        // --- Event Listeners ---
+        assessmentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Store user data
+            const weightLbs = parseFloat(document.getElementById('weight').value);
+            const heightFt = parseFloat(document.getElementById('heightFt').value);
+            const heightIn = parseFloat(document.getElementById('heightIn').value);
+
+            if (isNaN(weightLbs) || isNaN(heightFt) || isNaN(heightIn) || weightLbs <= 0 || heightFt <= 0) {
+                 alert("Please enter valid weight and height.");
+                 return;
+            }
+
+            userData = {
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                weightLbs: weightLbs,
+                heightFt: heightFt,
+                heightIn: heightIn,
+                activityLevel: document.getElementById('activityLevel').value
+            };
+            
+            // Show next step
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+            document.getElementById('step2').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        calculateBtn.addEventListener('click', function() {
+            const selectedMotivators = Array.from(document.querySelectorAll('input[name="motivator"]:checked')).map(cb => cb.value);
+
+            if (selectedMotivators.length === 0) {
+                alert("Please select at least one motivator.");
+                return;
+            }
+
+            userData.motivators = selectedMotivators;
+
+            displayBmiAndScenarios();
+            
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('results').classList.add('active');
+            document.getElementById('step3').classList.add('active');
+            document.getElementById('step4').classList.add('active');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        setGoalBtn.addEventListener('click', function() {
+            displayTimeline();
+        });
+        
+        // --- Functions ---
+        function calculateBMI(weightLbs, heightFt, heightIn) {
+            const heightTotalInches = (heightFt * 12) + heightIn;
+            const bmi = (weightLbs / (heightTotalInches * heightTotalInches)) * 703;
+            return parseFloat(bmi.toFixed(1));
+        }
+
+        function getBmiCategory(bmi) {
+            if (bmi < 18.5) return { category: "Underweight", color: "text-blue-600" };
+            if (bmi < 25) return { category: "Normal weight", color: "text-green-600" };
+            if (bmi < 30) return { category: "Overweight", color: "text-yellow-600" };
+            if (bmi < 35) return { category: "Obesity Class I", color: "text-orange-600" };
+            if (bmi < 40) return { category: "Obesity Class II", color: "text-red-600" };
+            return { category: "Obesity Class III", color: "text-red-800" };
+        }
+
+        function displayBmiAndScenarios() {
+            const { weightLbs, heightFt, heightIn, motivators } = userData;
+            
+            // Display BMI
+            const bmi = calculateBMI(weightLbs, heightFt, heightIn);
+            const bmiInfo = getBmiCategory(bmi);
+            bmiResultEl.innerHTML = `
+                <p class="text-lg">Your estimated BMI is <strong class="text-2xl ${bmiInfo.color}">${bmi}</strong></p>
+                <p class="text-md ${bmiInfo.color}">(${bmiInfo.category})</p>
+            `;
+            
+            // Display Scenarios
+            scenariosEl.innerHTML = ''; // Clear previous
+            const percentages = [5, 10, 15];
+            
+            percentages.forEach((p, index) => {
+                const lossLbs = (weightLbs * (p / 100)).toFixed(1);
+                const targetWeight = (weightLbs - lossLbs).toFixed(1);
+                
+                let benefitsHtml = '<ul class="list-disc list-inside space-y-2 text-slate-600">';
+                motivators.forEach(m => {
+                    if(scenarioData[m] && scenarioData[m][p]) {
+                        benefitsHtml += `<li>${scenarioData[m][p]}</li>`;
+                    }
+                });
+                benefitsHtml += '</ul>';
+
+                const scenarioCard = `
+                    <div class="p-5 rounded-lg border border-slate-200 bg-white fade-in" style="animation-delay: ${index * 200}ms;">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-2">If you lose ${p}% (${lossLbs} lbs)...</h3>
+                        <p class="mb-3 text-slate-500">Your new weight would be approximately <strong class="text-slate-700">${targetWeight} lbs</strong>. Potential benefits include:</p>
+                        ${benefitsHtml}
+                    </div>
+                `;
+                scenariosEl.innerHTML += scenarioCard;
+            });
+        }
+
+        function displayTimeline() {
+            const weeklyLoss = parseFloat(document.getElementById('weeklyLoss').value);
+            if (isNaN(weeklyLoss) || weeklyLoss <= 0) {
+                alert("Please enter a valid weekly loss goal.");
+                return;
+            }
+
+            const loss5percent = userData.weightLbs * 0.05;
+            const loss10percent = userData.weightLbs * 0.10;
+
+            const weeksFor5 = Math.round(loss5percent / weeklyLoss);
+            const weeksFor10 = Math.round(loss10percent / weeklyLoss);
+
+            goalTimelineEl.innerHTML = `
+                <div class="bg-emerald-50 border-l-4 border-emerald-500 text-emerald-800 p-4 rounded-r-lg fade-in">
+                    <h4 class="font-bold text-lg mb-2">Your Projected Timeline:</h4>
+                    <p>To reach your <strong>5%</strong> weight loss goal (${loss5percent.toFixed(1)} lbs), it would take approximately <strong>${weeksFor5} weeks</strong>.</p>
+                    <p>To reach your <strong>10%</strong> weight loss goal (${loss10percent.toFixed(1)} lbs), it would take approximately <strong>${weeksFor10} weeks</strong>.</p>
+                    <p class="mt-2 text-sm">Keep going! Consistency is the key to success.</p>
+                </div>
+            `;
+            goalTimelineEl.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Initial setup
+        window.onload = () => {
+             // Animate the first step in
+             setTimeout(() => {
+                document.getElementById('step1').classList.add('active');
+             }, 100);
+        };
+
+    </script>
+</body>
+</html>
+
 <p class="p1">&lt;/body&gt;</p>
 <p class="p1">&lt;/html&gt;</p>
 </body>
